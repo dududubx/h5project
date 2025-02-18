@@ -136,10 +136,8 @@
 
 <script setup lang="ts">
 import { ref, reactive, onMounted, computed, onUnmounted } from "vue";
-// import navTop from '@/components/navTop/index.vue'
 import dialogPopup from "@/components/dialog/index.vue";
 import loadingComp from "@/components/loading/index.vue";
-import imgPopup from "@/components/imgPopup/index.vue";
 import inobounce from "inobounce";
 import { Card, showToast, Swipe, SwipeItem } from "vant";
 import { apiData } from "@/api";

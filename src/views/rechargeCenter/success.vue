@@ -147,6 +147,7 @@
       <!-- <div class="goods_postscript"></div> -->
     </div>
   </div>
+  <div class="gif_img success_img"></div>
   <loadingComp :loading="showLoading" :loading-text="loadingText" v-model:src="src"></loadingComp>
 </template>
 
