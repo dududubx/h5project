@@ -7,7 +7,7 @@
     <div class="loader_page" v-show="loading">
       <!-- <img v-show="isLoading" @load="loadImg" @error="loadError" :src="src"/> -->
        <div class="loading_img">
-        <Vue3Lottie :animation-data="imgData" class="vue_lottie"></Vue3Lottie>
+        <Vue3Lottie :animation-data="imgData" class="vue_lottie" ref="lottie"></Vue3Lottie>
        </div>
         <!-- <iframe :src="src" @load="iframeLoading"></iframe> -->
         <!-- <div class="text_box">
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref, reactive, watch, onMounted } from "vue";
 import imgData from '@/assets/images/loading.json'
 import { Vue3Lottie } from "vue3-lottie";
 const text = ref('')
@@ -48,6 +48,24 @@ const loadError = () => {
 const iframeLoading = () => {
     text.value = '正在努力为你加载…'
 }
+const lottie = ref(null)
+const animationData = ref(null)
+watch(() => props.loading, (val) => {
+  if(val){
+    // lottie.value.goToAndPlay(-1, true)
+  }
+  console.log(val)
+})
+onMounted( async () =>  {
+    try {
+      // 异步引入 JSON 文件
+      const data = await import('@/assets/images/loading.json');
+      animationData.value = data.default; // 获取默认导出的动画数据
+    } catch (error) {
+      console.error('加载动画失败:', error);
+    } finally {
+    }
+  })
 /* HTML: <div class="loader"></div> */
 </script>
 
@@ -62,4 +80,7 @@ const iframeLoading = () => {
         height: 100%; /* 高度设置为500px */ 
         transform: scale(0.8);
     }
+.vue_lottie {
+  will-change: transform;
+}
 </style>

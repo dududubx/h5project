@@ -1,11 +1,11 @@
 <template>
   <div class="success">
     <div class="goods_title">
-      <div class="back_title" @click="goBack">
-        <div class="arrow">
+      <div class="back_title" >
+        <div class="arrow" @click="goBack">
           <img src="../../assets/images/arrow.svg" />
         </div>
-        <div class="arrow_text">订单详情</div>
+        <div class="arrow_text" @click.stop>订单详情</div>
       </div>
       <div class="goods_title-box">
         <div class="goods_title-left">
@@ -247,6 +247,7 @@ let timer = null;
 const goBack = () => {
   // router.back()
   // history.back()
+  console.log(history.state, 'bock')
   closeToast()
   router.push({
     path: "/",

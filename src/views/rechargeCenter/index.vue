@@ -156,7 +156,7 @@ const submitForm = () => {
 const searchValue = ref("");
 const showImgPopup = ref(false);
 const isLoading = ref(false);
-const banRefresh = ref(false);
+const banRefresh = ref(true);
 const onRefresh = () => {
   isLoading.value = true;
 
@@ -480,15 +480,15 @@ onMounted(() => {
       false
     );
   }
-  document
-    .querySelector(".van-pull-refresh")
-    .addEventListener("scroll", (event) => {
-      if (document.querySelector(".van-pull-refresh").scrollTop == 0) {
-        banRefresh.value = false;
-      } else {
-        banRefresh.value = true;
-      }
-    });
+  // document
+  //   .querySelector(".van-pull-refresh")
+  //   .addEventListener("scroll", (event) => {
+  //     if (document.querySelector(".van-pull-refresh").scrollTop == 0) {
+  //       banRefresh.value = false;
+  //     } else {
+  //       banRefresh.value = true;
+  //     }
+  //   });
   // 页面卸载时触发
   window.addEventListener("unload", function () {
     setTimeout(() => {
