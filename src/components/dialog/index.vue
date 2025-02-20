@@ -292,7 +292,9 @@ const submitUserInfo = () => {
       return showToast(`${isEmpty.value}`);
     }
     cardData.value.goods_tpl.forEach((item) => {
-      params["account"].push(item.textValue);
+      const obj = {}
+      obj[item.lable] = item.textValue
+      params["account"].push(obj);
     });
   }
   apiData.submitOrder(params).then((res) => {
