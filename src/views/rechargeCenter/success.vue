@@ -141,7 +141,7 @@
         </div>
         <div class="order_num" v-if="orederData?.order_status == 1 || orederData?.order_status == 3">
           <div class="left_name">完成时间</div>
-          <div class="right_info">{{ orederData?.finished_time }}</div>
+          <div class="right_info">{{ orederData?.finish_time }}</div>
         </div>
       </div>
       <!-- <div class="goods_postscript"></div> -->
