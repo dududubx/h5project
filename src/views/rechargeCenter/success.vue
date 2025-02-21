@@ -139,7 +139,7 @@
             <div class="right_info">{{ orederData?.orders_time }}</div>
           </div>
         </div>
-        <div class="order_num" v-if="orederData?.order_status == 4">
+        <div class="order_num" v-if="orederData?.order_status == 1 || orederData?.order_status == 3">
           <div class="left_name">完成时间</div>
           <div class="right_info">{{ orederData?.finished_time }}</div>
         </div>
