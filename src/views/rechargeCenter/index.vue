@@ -75,11 +75,13 @@
                     <span class="price">{{
                       isFloat(Number(item.productCurrent_price))
                         ? item.productCurrent_price
-                        : item.productCurrent_price + ".00"
+                        : item.productCurrent_price + '.00'
                     }}</span>
                   </div>
                   <div class="goods_num">
-                    ￥{{ item.productOriginal_price }}
+                    ￥{{ isFloat(Number(item.productOriginal_price))
+                        ? item.productOriginal_price
+                        : item.productOriginal_price + '.00'  }}
                   </div>
                 </div>
 

@@ -315,6 +315,12 @@ const submitUserInfo = () => {
       }, 250)
       
     }
+    else{
+      showToast({
+        message: res.msg,
+        duration: 200,
+      });
+    }
   });
   // const url = import.meta.env.VITE_Base_Url + "api/Product/submitExchange";
   // const request = () => {

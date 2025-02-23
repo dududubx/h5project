@@ -9,6 +9,16 @@ html {
 .van-button:active:before {
   opacity: 0 !important;
 }
+* {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefix version, currently supported by Chrome, Opera and Edge */
+}
 .recharge {
   height: 100svh;
   width: 100%;
@@ -289,16 +299,21 @@ html {
   box-shadow: 0px 4px 10px 0px rgba(192, 173, 255, 0.7), inset 2px 4px 10px 0px rgba(227, 225, 255, 0.302);
   border: none;
 }
-.recharge section .gif_img {
-  background: url('../images/gift.svg') 100% 100%;
+.gif_img {
+  background: url('../images/gift.png') no-repeat 100% 100%;
   background-size: cover;
   position: fixed;
-  width: 80px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   left: 10px;
   bottom: 10%;
   animation: shake 1s infinite ease-out alternate;
   transform-origin: bottom center;
+}
+.success_img {
+  left: 0;
+  bottom: 29%;
+  z-index: 99999;
 }
 .popup_content {
   padding: 21px 28px 12px;
@@ -516,9 +531,11 @@ html {
   justify-content: center;
 }
 .success {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   display: flex;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   background: url("../images/tqcz_topBg.png") 100% 0 no-repeat;
   background-size: contain;
   flex-direction: column;
@@ -553,6 +570,7 @@ html {
   justify-content: center;
   position: absolute;
   left: 0;
+  z-index: 9999;
 }
 .success .goods_title .back_title img {
   width: 26px;
@@ -667,7 +685,7 @@ html {
 }
 .success .goods_content {
   padding: 0 15px;
-  height: 100%;
+  height: auto;
   z-index: 2;
   position: relative;
 }
