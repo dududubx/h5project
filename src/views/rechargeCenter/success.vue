@@ -60,7 +60,7 @@
                 </div>
               </div>
               <!-- {{ decodeURIComponent(history.state.title as string) }} -->
-              <div class="yugujia_order_num">x{{ orederData?.num || 1 }}</div>
+              <div class="yugujia_order_num">x{{ orederData?.quantity || 1 }}</div>
             </div>
           </div>
         </div>
@@ -79,12 +79,12 @@
             实付款
             <span class="count_bottom-num">￥<span class="num_blod">{{
               isFloat(
-                Number(orederData?.productCurrent_price) * orederData?.count
+                Number(orederData?.productCurrent_price) * orederData?.quantity
               )
                 ? Number(orederData?.productCurrent_price) *
-                orederData?.count
+                orederData?.quantity
                 : Number(orederData?.productCurrent_price) *
-                orederData?.count +
+                orederData?.quantity +
                 ".00"
             }}</span></span>
           </div>
