@@ -96,10 +96,12 @@
             </div>
           </div>
         </div>
-        <!-- <div class="info-item" v-if="[2, 4].includes(orederData?.order_status)">
+        <div class="info-item" v-if=" orederData?.productType == 1 && [4].includes(orederData?.order_status)">
           正在提取卡密，请耐心等待!
-        </div> -->
-
+        </div>
+        <div class="info-item" v-if=" orederData?.productType == 1 && [3].includes(orederData?.order_status)">
+          提取卡密失败，请联系客服！
+        </div>
         <div
           v-if="
             orederData?.recharge_card &&
