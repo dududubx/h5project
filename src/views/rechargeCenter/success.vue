@@ -78,7 +78,7 @@
       </div>
       <div
         class="goods_postscript goods_order goods_box"
-        v-if="orederData?.productType == 1 && orederData?.order_status != 3"
+        v-if="orederData?.productType == 1 ||  orederData?.productType == 3"
       >
         <div class="order_num">
           <div class="left_name">提取卡密</div>
@@ -88,7 +88,7 @@
               v-if="
                 orederData?.recharge_card &&
                 orederData?.recharge_card.length > 0 &&
-                orederData?.order_status == 1
+                [2, 1].includes(orederData?.order_status)
               "
               @click="patchCopy"
             >
@@ -96,15 +96,15 @@
             </div>
           </div>
         </div>
-        <div class="info-item" v-if="[2, 4].includes(orederData?.order_status)">
+        <!-- <div class="info-item" v-if="[2, 4].includes(orederData?.order_status)">
           正在提取卡密，请耐心等待!
-        </div>
+        </div> -->
 
         <div
           v-if="
             orederData?.recharge_card &&
             orederData?.recharge_card.length > 0 &&
-            orederData?.order_status == 1
+            [2, 1].includes(orederData?.order_status)
           "
         >
           <div
@@ -113,7 +113,7 @@
             :key="item.id"
           >
             <div class="card-item-box" v-if="item.card_no">
-              <div class="card_title">卡号：</div>
+              <div class="card_title">{{ item.card_no_name }}</div>
               <div
                 class="card_text"
                 :class="{
@@ -131,7 +131,7 @@
               </div>
             </div>
             <div class="card-item-box" v-if="item.card_password">
-              <div class="card_title">卡密：</div>
+              <div class="card_title">{{item.card_password_name}}</div>
               <div
                 class="card_text"
                 :class="{
@@ -152,10 +152,10 @@
         <div class="order_num">
           <div class="left_name">订单编号</div>
           <div class="right_info">
-            <div class="num_code">{{ orederData?.tid }}</div>
+            <div class="num_code">{{ orederData?.orders }}</div>
             <div
               class="opear copy-btn"
-              @click="newCopyCode(orederData?.tid, 'order')"
+              @click="newCopyCode(orederData?.orders, 'order')"
             >
               复制
             </div>
@@ -249,7 +249,7 @@ const orderState = computed(() => {
           "../../assets/images/zhunbei.svg",
           import.meta.url
         ).href;
-        stateText.value = orederData.value?.productType == 2 ? "商家正在准备充值，请稍后再次查询" : "商家正在进行充值，请稍后再次查询";
+        stateText.value = orederData.value?.productType == 2 ? "商家正在进行充值，请稍后再次查询" : "商家正在进行发货，请稍后再次查询";
         break;
       case 3:
         text =  orederData.value?.productType == 2 ? "充值失败" : "发货失败";
@@ -409,7 +409,7 @@ const ClickJiaji = () => {
     // ).href;
     const request = () => {
       apiData
-        .urgentOrder({ key: route.query.order })
+        .urgentOrder({ orders: route.query.order })
         .then((res: any) => {
           if (res.code == 200) {
             isClick.value = true;
@@ -446,7 +446,7 @@ const loadDetails = () => {
     // orederData.value = {};
     timers.push(timer);
     apiData
-      .getOrder({ key: route.query.order })
+      .getOrder({ orders: route.query.order })
       .then((res) => {
         if (res.code == 200) {
           setTimeout(() => {
@@ -503,7 +503,7 @@ onMounted(() => {
     orederData.value = JSON.parse(localStorage.getItem("ordersData"));
   }
   apiData
-    .getOrder({ key: route.query.order })
+    .getOrder({ orders: route.query.order })
     .then((res) => {
       if (res.code == 200) {
         setTimeout(() => {
