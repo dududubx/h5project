@@ -73,15 +73,15 @@
                   >
                     <span class="price_unit">￥</span>
                     <span class="price">{{
-                      isFloat(Number(item.productCurrent_price))
-                        ? item.productCurrent_price
-                        : item.productCurrent_price + '.00'
+                      isFloat(Number(item.productPrice))
+                        ? item.productPrice
+                        : item.productPrice + '.00'
                     }}</span>
                   </div>
                   <div class="goods_num">
-                    ￥{{ isFloat(Number(item.productOriginal_price))
-                        ? item.productOriginal_price
-                        : item.productOriginal_price + '.00'  }}
+                    ￥{{ isFloat(Number(item.officialPrice))
+                        ? item.officialPrice
+                        : item.officialPrice + '.00'  }}
                   </div>
                 </div>
 
