@@ -19,10 +19,10 @@
               <div class="bottom_price">
                 <div class="price_unit">￥</div>
                 <div class="price_num">
-                  {{ isFloat(Number(rechargeData.productOriginal_price)) ? rechargeData.productOriginal_price : rechargeData.productOriginal_price + '.00' }}
+                  {{ isFloat(Number(rechargeData.officialPrice)) }}
                 </div>
               </div>
-              <div class="bottom_other">会员价:{{ isFloat(Number(rechargeData.productCurrent_price)) ? rechargeData.productCurrent_price : rechargeData.productCurrent_price + '.00' }}</div>
+              <div class="bottom_other">会员价:{{ isFloat(Number(rechargeData.productPrice)) }}</div>
             </div>
           </div>
         </div>
