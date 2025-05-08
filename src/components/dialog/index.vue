@@ -291,11 +291,11 @@ const submitUserInfo = () => {
     if (isEmpty) {
       return showToast(`${isEmpty.value}`);
     }
+    const obj = {}
     cardData.value.goods_tpl.forEach((item) => {
-      const obj = {}
       obj[item.lable] = item.textValue
-      params["account"].push(obj);
     });
+    params["account"].push(obj);
   }
   apiData.submitOrder(params).then((res) => {
     

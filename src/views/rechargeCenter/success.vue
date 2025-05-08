@@ -177,10 +177,12 @@
             </div>
           </div>
         </div>
-        <div class="order_num" v-if="orederData?.recharge_account">
-          <div class="left_name">充值账号</div>
-          <div class="right_info">
-            {{ orederData?.recharge_account }}
+        <div class="order_num" v-if="orederData?.recharge_account && orederData?.recharge_account.length > 0" >
+          <div class="order_circle" v-for="item in orederData.recharge_account" :key="item.account">
+            <div class="left_name">{{ item.account_name }}</div>
+            <div class="right_info">
+              {{ item?.account }}
+            </div>
           </div>
         </div>
         <div class="order_num">
