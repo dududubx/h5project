@@ -81,7 +81,7 @@
         v-if="orederData?.productType == 1 ||  orederData?.productType == 3"
       >
         <div class="order_num">
-          <div class="left_name">提取卡密</div>
+          <div class="left_name">{{ orederData?.productType == 1 ? '提取卡密' : '发货内容' }}</div>
           <div class="right_info">
             <div
               class="opear batchCopy-btn"
@@ -96,11 +96,11 @@
             </div>
           </div>
         </div>
-        <div class="info-item" v-if=" orederData?.productType == 1 && [4].includes(orederData?.order_status)">
-          正在提取卡密，请耐心等待!
+        <div class="info-item" v-if="[4].includes(orederData?.order_status)">
+          {{ `正在提取${orederData?.productType == 1 ? '卡密' : '发货内容'}，请耐心等待!`}}
         </div>
-        <div class="info-item" v-if=" orederData?.productType == 1 && [3].includes(orederData?.order_status)">
-          提取卡密失败，请联系客服！
+        <div class="info-item" v-if="[3].includes(orederData?.order_status)">
+          {{`提取${orederData?.productType == 1 ? '卡密' : '发货内容'}失败，请联系客服！`}}
         </div>
         <div
           v-if="
@@ -173,7 +173,7 @@
           <div class="left_name">商品类型</div>
           <div class="right_info">
             <div class="num_code">
-              {{ orederData?.productType == 1 ? "卡密充值" : "自动充值" }}
+              {{ orederData?.productType == 1 ? "卡密充值" : orederData?.productType == 3 ? "接码充值" : "自动充值" }}
             </div>
           </div>
         </div>
@@ -319,10 +319,10 @@ const newCopyCode = (val, type) => {
   } else {
     let text = "";
     if (val.card_no) {
-      text += "卡号：" + val.card_no + "\r\n";
+      text += val.card_no_name + ":" + val.card_no + "\r\n";
     }
     if (val.card_password) {
-      text += "卡密：" + val.card_password;
+      text += val.card_password_name + ":" + val.card_password;
     }
     input.value = text; // 设置输入框的值为要复制的文本
   }
@@ -351,7 +351,7 @@ const patchCopy = () => {
   const text = orederData.value.recharge_card.reduce((acc, cur, index) => {
     if (cur.card_no) {
       acc +=
-        "卡号：" +
+      cur.card_no_name + ":" +
         cur.card_no +
         (index == orederData.value.recharge_card.length - 1 &&
         !cur.card_password
@@ -360,7 +360,7 @@ const patchCopy = () => {
     }
     if (cur.card_password) {
       acc +=
-        "卡密：" +
+      cur.card_password_name + ":" +
         cur.card_password +
         (index == orederData.value.recharge_card.length - 1 ? "" : "\n");
     }
