@@ -30,9 +30,9 @@ export function throttle (fn, delay = 300){
 
 export const isJson = (val) => {
     try {
-        return JSON.parse(val)
+      return JSON.parse(val)
     } catch (error) {
-        return val
+        throw error
     }
 }
 

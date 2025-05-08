@@ -71,7 +71,7 @@ const longPress = useLongPress(() => {
   }
 }
 .popup_img {
-  height: 368px;
+  height: 340px;
   width: 300px;
   // overflow: hidden;
   position: relative;

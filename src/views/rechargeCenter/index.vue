@@ -65,8 +65,7 @@
                   <div
                     class="price_box"
                     :class="
-                      item.goods_status == '4' ||
-                      item.goods_status == '5'
+                      item.goods_status == '4' || item.goods_status == '5'
                         ? 'price_choose'
                         : ''
                     "
@@ -77,17 +76,25 @@
                     }}</span>
                   </div>
                   <div class="goods_num">
-                    ￥{{ isFloat(Number(item.officialPrice))  }}
+                    ￥{{ isFloat(Number(item.officialPrice)) }}
                   </div>
                 </div>
 
-                <div class="goods_btn" v-if="['1', '2', '3', '4', '5', '6'].includes(item.goods_status) && ['1', '2'].includes(item.receive_status)">
+                <div
+                  class="goods_btn"
+                  v-if="
+                    ['1', '2', '3', '4', '5', '6'].includes(
+                      item.goods_status
+                    ) && ['1', '2'].includes(item.receive_status)
+                  "
+                >
                   <van-button
                     round
                     type="primary"
                     class="recharge_btn confirm_btn"
                     :disabled="
-                      (item.goods_status == '4' || item.goods_status == '5') && item.receive_status == '2'
+                      (item.goods_status == '4' || item.goods_status == '5') &&
+                      item.receive_status == '2'
                     "
                     @click.stop="confirmRecharge(item)"
                     >{{
@@ -101,8 +108,7 @@
               v-if="item.goods_status"
               class="card_right-icon"
               :class="[cardState(item.goods_status)]"
-            >
-            </div>
+            ></div>
           </div>
         </div>
         <div class="gif_img"></div>
@@ -260,8 +266,8 @@ const confirmRecharge = (item) => {
   rechargeData.value = item;
   if (item.receive_status == "2") {
     dialogTitle.value = "兑换充值";
-
     item.goods_tpl = isJson(item.goods_tpl);
+    
     if (Array.isArray(item.goods_tpl)) {
       item.goods_tpl.forEach((citem) => {
         citem.textValue = "";

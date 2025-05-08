@@ -198,7 +198,7 @@
     </div>
   </div>
   <div class="gif_img success_img" v-if="!showLoading"></div>
-  <!-- <imgPopup v-model:showImgPopup="showImgPopup"></imgPopup> -->
+  <imgPopup v-model:showImgPopup="showImgPopup"></imgPopup>
   <loadingComp
     :loading="showLoading"
     :loading-text="loadingText"

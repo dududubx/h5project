@@ -32,7 +32,7 @@
               v-if="item.type == 'text'"
               v-model="item.textValue"
               :required="item.required"
-              :type="item.name == 'phone' ? 'tel' : 'text'"
+              :type="item.lable == 'phone' ? 'tel' : 'text'"
               :placeholder="item.value"
               autocomplete="off"
             />
@@ -83,8 +83,6 @@ import { showToast, PopupPosition, Picker, VantStepper, Toast, closeToast} from 
 import router from "@/router";
 import { apiData } from "@/api";
 import { getUrlParams, throttle, isFloat } from "@/utils/util";
-import { text } from "stream/consumers";
-import { resolve } from "path";
 
 const src = ref(
   new URL("../../assets/images/loading.gif", import.meta.url).href
