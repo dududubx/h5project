@@ -78,7 +78,7 @@
       </div>
       <div
         class="goods_postscript goods_order goods_box"
-        v-if="orederData?.productType == 1 ||  orederData?.productType == 3"
+        v-if="(orederData?.productType == 1 ||  orederData?.productType == 3) && orederData?.recharge_card && orederData?.recharge_card.length > 0"
       >
         <div class="order_num">
           <div class="left_name">{{ orederData?.productType == 1 ? '提取卡密' : '发货内容' }}</div>
